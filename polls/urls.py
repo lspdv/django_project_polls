@@ -1,5 +1,6 @@
-from django.conf.urls import patterns,url
-
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from django.conf import settings
 from polls import views
 
 app_name = 'polls'
