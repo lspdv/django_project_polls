@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html lang="cs">
+  <head>
+      <title>Ankety</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+  </head>
+  <body>
+    <div class="page-header">
+         <h1><a href="/">Veroničkovo dotazníčky</a></h1>
+    </div>
+    {% if latest_question_list %}
+      <ul>
+        {% for question in latest_question_list %}
+          <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+      </ul>
+        {% else %}
+          <p>Nemám pro tebe žádnou anketu!</p>
+    {% endif %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>
